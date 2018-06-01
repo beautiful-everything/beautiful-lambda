@@ -1,6 +1,6 @@
 import unittest
 
-from beautiful_lambda import _1, _2, _3
+from beautiful_lambda import _, _1, _2, _3
 
 
 class SingleArgTest(unittest.TestCase):
@@ -14,3 +14,7 @@ class SingleArgTest(unittest.TestCase):
 
     def test_expression(self):
         self.assertEqual((_3 - 2 + (_2 * _1 + 1))(1, 2, 3), 4)
+        self.assertEqual((_ - 2 + (_ * _ + 1))(1, 2, 3), 6)
+
+    def test_implicit_positional_mixing(self):
+        self.assertRaises(ValueError, lambda: _ + _2)
